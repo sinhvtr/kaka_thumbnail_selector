@@ -18,6 +18,7 @@ with col1:
         st.video(video_bytes)
 with col2:
     if f != None:
+        st.header('Thumbnail selected')
         vidcap = cv2.VideoCapture(tfile.name)
         tmp_filename = tfile.name.split('/')[-1]
         fps = vidcap.get(cv2.CAP_PROP_FPS)
@@ -32,6 +33,6 @@ with col2:
             if count/fps == 3:
                 cv2.imwrite(tmp_filename + "_frame" + str(count) + ".jpg", image)     # save frame as JPEG file
                 output_image = Image.open(tmp_filename + "_frame" + str(count) + ".jpg")
-                st.image(output_image, caption='Thumbnail selected')
+                st.image(output_image)
     else:
         st.text('No file selected')
