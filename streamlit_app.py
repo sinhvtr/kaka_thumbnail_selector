@@ -3,7 +3,7 @@ import cv2
 import tempfile
 from PIL import Image
 
-
+st.set_page_config(layout="wide")
 detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 col1, col2 = st.columns(2)
