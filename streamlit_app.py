@@ -5,7 +5,6 @@ from PIL import Image
 
 
 detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-output_path = 'test_data/tmp_thumbs/'
 
 col1, col2 = st.columns(2)
 
@@ -31,10 +30,8 @@ with col2:
             count+=1
             # print("time stamp current frame:",count/fps)
             if count/fps == 3:
-                # print(output_path + tmp_filename + "_frame" + str(count) + ".jpg")
-                # cv2.putText(image, str(count/fps),(20, 40), font, 2, (255, 255, 255), 2, cv2.LINE_AA)
-                cv2.imwrite(output_path + tmp_filename + "_frame" + str(count) + ".jpg", image)     # save frame as JPEG file
-                output_image = Image.open(output_path + tmp_filename + "_frame" + str(count) + ".jpg")
+                cv2.imwrite(tmp_filename + "_frame" + str(count) + ".jpg", image)     # save frame as JPEG file
+                output_image = Image.open(tmp_filename + "_frame" + str(count) + ".jpg")
                 st.image(output_image, caption='Thumbnail selected')
     else:
         st.text('No file selected')
